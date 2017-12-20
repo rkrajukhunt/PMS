@@ -1,0 +1,5 @@
+try {
+            
+} catch (Exception e) {
+            JOptionPane.showMessageDialog(this,val.printError(e.getClass(),e.getMessage(),getClass().getName()),"Error",JOptionPane.ERROR_MESSAGE);
+        }
