@@ -15,9 +15,7 @@ public class rkMD5
             BigInteger hash = new BigInteger(1, md.digest());        
             result = hash.toString(16);        
             while(result.length() < 32)
-            {         
-                result = "0" + result;        
-            }    
+                result = "0" + result;          
         }   
         return result;
     }
