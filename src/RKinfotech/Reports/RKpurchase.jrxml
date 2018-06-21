@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4b885448-3e92-4675-8e62-72383edeacec">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="3461714d-1203-4cc0-8afd-04a76edb4859"/>
+	<parameter name="rkStartDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="rkEndDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     rkpurchase.`ID` AS rkpurchase_ID,
+     rkpurchase.`rkPurchasePartyName` AS rkpurchase_rkPurchasePartyName,
+     rkpurchase.`rkPurchaseDate` AS rkpurchase_rkPurchaseDate,
+     rkpurchase.`rkPurchaseAmount` AS rkpurchase_rkPurchaseAmount,
+     rkpurchase.`rkPurchaseRemark` AS rkpurchase_rkPurchaseRemark,
+     rkpurchase.`rkPurchasePartyID` AS rkpurchase_rkPurchasePartyID,
+     rkpurchase.`rkPurchaseBillNo` AS rkpurchase_rkPurchaseBillNo
+FROM
+     `rkpurchase` rkpurchase  WHERE rkPurchaseDate BETWEEN $P{rkStartDate} AND $P{rkEndDate}]]>
+	</queryString>
+	<field name="rkpurchase_ID" class="java.lang.Integer"/>
+	<field name="rkpurchase_rkPurchasePartyName" class="java.lang.String"/>
+	<field name="rkpurchase_rkPurchaseDate" class="java.sql.Date"/>
+	<field name="rkpurchase_rkPurchaseAmount" class="java.lang.String"/>
+	<field name="rkpurchase_rkPurchaseRemark" class="java.lang.String"/>
+	<field name="rkpurchase_rkPurchasePartyID" class="java.lang.Integer"/>
+	<field name="rkpurchase_rkPurchaseBillNo" class="java.lang.String"/>
+	<title>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="56" backcolor="#006699" uuid="1afcedf2-4979-48f3-a27b-01e49bd22aa5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="28" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Purchase]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="ae7207e3-9578-4c37-b754-437b1c3995a1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="56" uuid="d7b85a93-4563-469a-97df-f3412e74dfa4"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="56" uuid="a86c143a-b0f6-4525-a7a4-3648a91b156b"/>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="9249c5e3-df45-4eb4-b60d-558631e4042a"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="23" uuid="8beadef0-cf60-45a4-ab9a-2d67aca441b1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="23" uuid="417db43e-0dbb-4524-bd87-c34fe45c9b56"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="1" width="41" height="22" uuid="67a0c788-e497-4848-b94e-8eb7ab6104e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sr.No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="1" width="183" height="22" uuid="a979a056-eec4-4d18-8d15-8d1c1df04c94"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name Of Party]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="1" width="69" height="22" uuid="8d6bddc6-04e0-4801-b280-98ec09cd077c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bill No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="1" width="69" height="22" uuid="4a71f53b-9be8-4a5a-9af8-311ebe7dc964"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="362" y="1" width="69" height="22" uuid="0a53acd3-7de6-4d0a-ba44-8d622624e4fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="1" width="124" height="22" uuid="bf006017-ec39-4f8f-bd84-9356f1a0e0b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Remark]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="1" width="69" height="22" uuid="5a235b26-a5c9-4806-9e11-dfb5c8a2ef56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="d2b6e1bf-69b4-4aed-ac5c-fedc5ffd9e14"/>
+			</line>
+			<line>
+				<reportElement x="1" y="22" width="555" height="1" uuid="120c205d-b760-422c-92b1-0373cfa893ab"/>
+			</line>
+			<line>
+				<reportElement x="555" y="0" width="1" height="23" uuid="c9b6a737-8bab-4e8f-bcb9-a2148b4f57da"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-1" width="1" height="24" uuid="e6bb1d0c-5c17-47c3-b96d-e9f3e2725c6e"/>
+			</line>
+			<textField>
+				<reportElement x="225" y="1" width="69" height="21" uuid="62c44cf8-1b9d-4453-a705-f832b375200d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkpurchase_rkPurchaseBillNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="1" width="124" height="21" uuid="ac549f74-3f34-4e5d-9f50-c39b56189e5d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkpurchase_rkPurchaseRemark}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="362" y="1" width="69" height="21" uuid="4682322c-14bc-4549-8c69-8003e3dced90"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkpurchase_rkPurchaseAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="1" width="41" height="21" uuid="c572ccc9-69cc-467f-a595-2e85efaa601e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="42" y="1" width="183" height="21" uuid="a0edd195-cadf-491e-88fd-0babe31e8dea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkpurchase_rkPurchasePartyName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="293" y="1" width="69" height="21" uuid="149e0568-b955-4cc1-b827-dd67552e081d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkpurchase_rkPurchaseDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

@@ -67,10 +67,12 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
         rkPTS = new javax.swing.JTextField();
         rkMonth = new javax.swing.JComboBox<>();
         rkYear = new javax.swing.JComboBox<>();
+        jLabel23 = new javax.swing.JLabel();
+        rkEYE = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("ANURAG NAGAR REPORT");
+        setTitle("ANURAG NAGAR");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -250,6 +252,18 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel23.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 1, 14)); // NOI18N
+        jLabel23.setText("Eye Check up");
+
+        rkEYE.setText("00");
+        rkEYE.setToolTipText("Child");
+        rkEYE.setEnabled(false);
+        rkEYE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                rkEYErkMasterKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -289,6 +303,10 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
                                 .addComponent(rkIPD, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rkIDD))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel19)
@@ -302,15 +320,13 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGap(36, 36, 36)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(rkAPT)
                                         .addComponent(rkECU)
-                                        .addComponent(rkPTS, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rkIDD)))
+                                        .addComponent(rkPTS, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(rkEYE))))
+                            .addComponent(jLabel23))
+                        .addGap(2, 2, 2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -353,6 +369,10 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(rkECU))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(rkEYE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
@@ -424,13 +444,15 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
         try {
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+           
+        } catch (Exception e) {
+            //e.printStackTrace();
         }
     }//GEN-LAST:event_formInternalFrameClosed
+
+    private void rkEYErkMasterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rkEYErkMasterKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rkEYErkMasterKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel11;
@@ -444,11 +466,13 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField rkAPT;
     private javax.swing.JTextField rkChild;
     private javax.swing.JTextField rkECU;
+    private javax.swing.JTextField rkEYE;
     private javax.swing.JTextField rkFemale;
     private javax.swing.JTextField rkIDD;
     private javax.swing.JTextField rkIPD;
@@ -470,7 +494,7 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
     int rkRowID;
 
     private void rkUpdate() throws SQLException {
-        ps = con.prepareStatement("UPDATE `rkanagar` SET `rkAnagarMale`=?,`rkAnagarFemale`=?,`rkAnagarChild`=?,`rkAnagarIPD`=?,`rkAnagarIID`=?,`rkAnagarSOW`=?,`rkAnagarECU`=?,`rkAnagarAPT`=?,`rkAnagarPTS`=?,`rkAnagarMonth`=?,`rkAnagarYear`=? WHERE `ID` = " + rkRowID);
+        ps = con.prepareStatement("UPDATE `rkanagar` SET `rkAnagarMale`=?,`rkAnagarFemale`=?,`rkAnagarChild`=?,`rkAnagarIPD`=?,`rkAnagarIID`=?,`rkAnagarSOW`=?,`rkAnagarECU`=?,`rkAnagarAPT`=?,`rkAnagarPTS`=?,`rkAnagarMonth`=?,`rkAnagarYear`=?,`rkAnagarEYE` = ? WHERE `ID` = " + rkRowID);
         ps.setString(1, rkMale.getText());
         ps.setString(2, rkFemale.getText());
         ps.setString(3, rkChild.getText());
@@ -482,6 +506,7 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
         ps.setString(9, rkPTS.getText());
         ps.setString(10, (String) rkMonth.getSelectedItem());
         ps.setString(11, (String) rkYear.getSelectedItem());
+        ps.setString(12, rkEYE.getText());
         int count = ps.executeUpdate();
         ps.close();
 
@@ -493,7 +518,7 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
     }
 
     private void rkInsert() throws SQLException {
-        ps = con.prepareStatement("INSERT INTO `rkanagar`(`rkAnagarMale`, `rkAnagarFemale`, `rkAnagarChild`, `rkAnagarIPD`, `rkAnagarIID`, `rkAnagarSOW`, `rkAnagarECU`, `rkAnagarAPT`, `rkAnagarPTS`, `rkAnagarMonth`, `rkAnagarYear`) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+        ps = con.prepareStatement("INSERT INTO `rkanagar`(`rkAnagarMale`, `rkAnagarFemale`, `rkAnagarChild`, `rkAnagarIPD`, `rkAnagarIID`, `rkAnagarSOW`, `rkAnagarECU`, `rkAnagarAPT`, `rkAnagarPTS`, `rkAnagarMonth`, `rkAnagarYear`,`rkAnagarEYE`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
         ps.setString(1, rkMale.getText());
         ps.setString(2, rkFemale.getText());
         ps.setString(3, rkChild.getText());
@@ -505,6 +530,7 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
         ps.setString(9, rkPTS.getText());
         ps.setString(10, (String) rkMonth.getSelectedItem());
         ps.setString(11, (String) rkYear.getSelectedItem());
+        ps.setString(12, rkEYE.getText());
         int count = ps.executeUpdate();
         ps.close();
         if (count > 0) {
@@ -522,17 +548,18 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
         if (rs.next()) {
             rkSave.setText("Update");
             rkRowID = rs.getInt(1);
-            rkMale.setText(rs.getString(2));
-            rkFemale.setText(rs.getString(3));
-            rkChild.setText(rs.getString(4));
+            rkMale.setText(rs.getString("rkAnagarMale"));
+            rkFemale.setText(rs.getString("rkAnagarFemale"));
+            rkChild.setText(rs.getString("rkAnagarChild"));
             String asn = String.valueOf(Integer.parseInt(rkMale.getText()) + Integer.parseInt(rkFemale.getText()) + Integer.parseInt(rkChild.getText()));
             rkTotal.setText(asn);
-            rkIPD.setText(rs.getString(5));
-            rkIDD.setText(rs.getString(6));
-            rkSOW.setText(rs.getString(7));
-            rkECU.setText(rs.getString(8));
-            rkAPT.setText(rs.getString(9));
-            rkPTS.setText(rs.getString(10));
+            rkIPD.setText(rs.getString("rkAnagarIPD"));
+            rkIDD.setText(rs.getString("rkAnagarIID"));
+            rkSOW.setText(rs.getString("rkAnagarSOW"));
+            rkECU.setText(rs.getString("rkAnagarECU"));
+            rkEYE.setText(rs.getString("rkAnagarEYE"));
+            rkAPT.setText(rs.getString("rkAnagarAPT"));
+            rkPTS.setText(rs.getString("rkAnagarPTS"));
             rkMale.setEnabled(true);
             rkFemale.setEnabled(true);
             rkChild.setEnabled(true);
@@ -540,6 +567,7 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
             rkIDD.setEnabled(true);
             rkSOW.setEnabled(true);
             rkECU.setEnabled(true);
+            rkEYE.setEnabled(true);
             rkAPT.setEnabled(true);
             rkPTS.setEnabled(true);
             rs.close();
@@ -554,6 +582,7 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
             rkIDD.setEnabled(true);
             rkSOW.setEnabled(true);
             rkECU.setEnabled(true);
+            rkEYE.setEnabled(true);
             rkAPT.setEnabled(true);
             rkPTS.setEnabled(true);
             rkMale.setText("00");
@@ -563,6 +592,7 @@ public class RKANagarReport extends javax.swing.JInternalFrame {
             rkIDD.setText("00");
             rkSOW.setText("00");
             rkECU.setText("00");
+            rkEYE.setText("00");
             rkAPT.setText("00");
             rkPTS.setText("00");
         }

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2c6b35a9-fe4d-4d04-9842-930911d0f349">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="todayDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     rkissued.`rkStockName` AS rkissued_rkissuedName,
+     rkissued.`rkStockBatchNo` AS rkissued_rkissuedBatchNo,
+     rkissued.`rkStockExpDate` AS rkissued_rkissuedExDate,
+     rkissued.`rkStockDate` AS rkissued_rkissuedStock,
+     rkissued.`ID` AS rkissued_ID
+FROM
+     `rkstock` rkissued where rkissued.`rkStockExpDate` >= $P{todayDate} ORDER BY rkissued.`ID` DESC]]>
+	</queryString>
+	<field name="rkissued_rkissuedName" class="java.lang.String"/>
+	<field name="rkissued_rkissuedBatchNo" class="java.lang.String"/>
+	<field name="rkissued_rkissuedExDate" class="java.sql.Date"/>
+	<field name="rkissued_rkissuedStock" class="java.sql.Date"/>
+	<field name="rkissued_ID" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="310f1fd3-30fb-45fc-bb16-c87a96c8b24d"/>
+				<staticText>
+					<reportElement x="20" y="20" width="526" height="43" forecolor="#FFFFFF" uuid="09b1662a-0c86-41dd-ab88-96fa834e6e3e"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Issued Medicine Report]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="ccb99a20-70ff-4be5-a04d-eaf70e451e97"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="30" y="0" width="194" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="acb58182-3c02-4629-8371-8d4feb3f3109"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Medicine Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="224" y="0" width="134" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="8eda85f9-00f6-4665-a6d5-6c773267c67b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Batch No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="357" y="0" width="198" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7d5f8ac7-6f63-4d58-ba6c-5d88d5f04277"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ex.Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="30" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="23b40514-c00f-4d03-9d97-564bd100f8f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="0a30c93d-27f1-49cd-8d8a-facbe7ace5cb"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="30" y="0" width="194" height="20" uuid="2db32d15-0a2c-4c68-a099-d575d9593e07"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkissued_rkissuedName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="224" y="0" width="134" height="20" uuid="37f5b7e2-d27b-4dba-aa81-2deefeef69bf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkissued_rkissuedBatchNo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="357" y="0" width="198" height="20" uuid="ca082ced-0634-4379-81b7-c955aace0778"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkissued_rkissuedExDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="30" height="20" uuid="080fad99-66ce-490c-8f9b-8ece7ab3c647"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="900a3719-95d6-4b0f-9c48-1b6f8fb2b37a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="007cf1cb-3ae8-425b-81cb-9ea2019de099"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="f3e5a115-b201-496d-ae29-79585ee45ec4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

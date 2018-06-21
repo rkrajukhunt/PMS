@@ -295,6 +295,7 @@ public class rkDatabase {
             return count;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, rkValidation.printErrorStatic(ex.getMessage(),ex.getMessage()), "Error", JOptionPane.ERROR_MESSAGE);
         }
         return 0;
     }

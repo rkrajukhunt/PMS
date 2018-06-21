@@ -430,13 +430,7 @@ public class RKPlantReport extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rkMasterTotalFocusLost
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
-        try {
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        
     }//GEN-LAST:event_formInternalFrameClosing
 
 

@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="52d17070-17d3-4ff2-9101-f7c940c73f93">
+	<property name="ireport.zoom" value="7.0"/>
+	<property name="ireport.x" value="3300"/>
+	<property name="ireport.y" value="992"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="d93fa275-04f7-4c72-973e-31a776546cb1"/>
+	<parameter name="rkYear" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2017"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+            `ID` as rkplant_rkPlantID, 
+            `rkPlantOfficer` as rkplant_rkPlantOfficer, 
+            `rkPlantTechnition` as rkplant_rkPlantTechnition, 
+            `rkPlantContract` as rkplant_rkPlantContract,
+            `rkPlantTotal` as rkplant_rkPlantTotal,
+            `rkPlantNewCase` as rkplant_rkPlantNewCase,
+            `rkPlantOldCasel` as rkplant_rkPlantOldCase1,
+            `rkPlantDressing` as rkplant_rkPlantDresing,
+            `rkPlantMale` as rkplant_rkPlantMale,
+            `rkPlantFemale` as rkplant_rkPlantFemale,
+            `rkPlantLTI` as rkplant_rkPlantLTI,
+            `rkPlantMonth` as rkplant_rkPlantMonth,
+            `rkPlantYear` as rkplant_rkPlantYear
+FROM
+     rkplant where `rkPlantYear` = $P{rkYear} ORDER BY rkPlantMonth DESC]]>
+	</queryString>
+	<field name="rkplant_rkPlantID" class="java.lang.Integer"/>
+	<field name="rkplant_rkPlantOfficer" class="java.lang.String"/>
+	<field name="rkplant_rkPlantTechnition" class="java.lang.String"/>
+	<field name="rkplant_rkPlantContract" class="java.lang.String"/>
+	<field name="rkplant_rkPlantTotal" class="java.lang.String"/>
+	<field name="rkplant_rkPlantNewCase" class="java.lang.String"/>
+	<field name="rkplant_rkPlantOldCase1" class="java.lang.String"/>
+	<field name="rkplant_rkPlantDresing" class="java.lang.String"/>
+	<field name="rkplant_rkPlantMale" class="java.lang.String"/>
+	<field name="rkplant_rkPlantFemale" class="java.lang.String"/>
+	<field name="rkplant_rkPlantLTI" class="java.lang.String"/>
+	<field name="rkplant_rkPlantMonth" class="java.lang.String"/>
+	<field name="rkplant_rkPlantYear" class="java.lang.String"/>
+	<title>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="0" width="552" height="94" uuid="c27e2436-1021-4dd1-a2be-da945bade098"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Annual Report of workers treated  at Plant Dispensary During Year -]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="434" y="46" width="113" height="29" uuid="c17a9316-a67c-4223-91fd-65ab35e04512"/>
+				<textElement verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rkYear}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="413" y="1" width="141" height="20" uuid="b7927c91-9caa-4fba-a93b-6e07de2b6ab9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Accident Case]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="1b1cfe01-b59a-43b6-a42d-45884e119ed8"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="1" width="48" height="40" uuid="1ff67198-1e46-46b4-b3bc-21a06cdbf0cb"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Month Yr]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="1" width="55" height="40" uuid="74ef44ef-1583-416a-a938-a1439eca2c35"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Officers]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="1" width="73" height="40" uuid="42d6503f-d5b2-4cab-a65e-87435666c51d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Technitions]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="0" width="50" height="40" uuid="155f8c95-e204-462f-a2b3-dc5609617264"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contract
+Workers]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="229" y="1" width="35" height="40" uuid="fe70311f-4bdf-47fa-911d-8cc4ab8b4a80"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="1" width="42" height="40" uuid="8626f2ff-5757-4f2e-a12b-7da7d224f29e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Old
+Case]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="1" width="67" height="40" uuid="69b8b975-a613-4b18-92ca-2d12b0982822"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dressings]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="1" width="36" height="40" uuid="364f8231-7252-4cce-8a27-23de1df2493f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[New 
+Case]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="41" width="555" height="1" uuid="2b847033-ec7a-4352-9004-f4da77225d18"/>
+			</line>
+			<line>
+				<reportElement x="178" y="1" width="1" height="40" uuid="99c85ed9-a1d1-47c7-b755-917400e804e5"/>
+			</line>
+			<line>
+				<reportElement x="228" y="1" width="1" height="40" uuid="b05cf526-c18d-43a8-95c3-e399b3c58a84"/>
+			</line>
+			<line>
+				<reportElement x="264" y="0" width="1" height="41" uuid="37c6d825-0ea6-4ef0-9c61-95c28b24bb2c"/>
+			</line>
+			<line>
+				<reportElement x="301" y="1" width="1" height="40" uuid="3f0bb5d2-0053-4a38-9a61-e59ddbac9a57"/>
+			</line>
+			<line>
+				<reportElement x="344" y="1" width="1" height="40" uuid="dc5dee8a-5867-476c-ab27-fb6159189d4a"/>
+			</line>
+			<line>
+				<reportElement x="412" y="1" width="1" height="40" uuid="115383ed-7994-49d6-82d0-1314394a3672"/>
+			</line>
+			<line>
+				<reportElement x="413" y="21" width="141" height="1" uuid="6fdc0c13-739f-4b2c-9690-1259ed29a384"/>
+			</line>
+			<line>
+				<reportElement x="554" y="-94" width="1" height="135" uuid="8afd662d-d7eb-42e4-810b-5bddab270700"/>
+			</line>
+			<line>
+				<reportElement x="104" y="1" width="1" height="40" uuid="276bd2a8-0a05-4e4b-80d5-f07500f06868"/>
+			</line>
+			<line>
+				<reportElement x="48" y="1" width="1" height="40" uuid="bfe9050d-0b13-45ae-8bd9-8c57fc84a3c1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-94" width="1" height="136" uuid="0cea6f15-b66e-426d-b3b9-727c03e28835"/>
+			</line>
+			<line>
+				<reportElement x="1" y="-94" width="554" height="1" uuid="0054c869-d6af-46f9-a12d-005be21bccd2"/>
+			</line>
+			<line>
+				<reportElement x="476" y="21" width="1" height="20" uuid="2a415b55-2b1a-4709-b49a-167633acc8f7"/>
+			</line>
+			<line>
+				<reportElement x="511" y="21" width="1" height="20" uuid="e449ff87-8c18-4ce3-9556-9f871e91efa5"/>
+			</line>
+			<staticText>
+				<reportElement x="413" y="22" width="63" height="19" uuid="8325dfac-c339-44ed-a85d-44cfe01fb0e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Female]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="22" width="34" height="19" uuid="d092a64c-edf2-454f-803a-a58b68a78664"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Male]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="512" y="22" width="42" height="19" uuid="7d4fe2c9-c2c0-46d7-84e0-9b03c352bc32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LTI]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="47" y="1" width="57" height="26" uuid="da34c9ef-23ee-4fac-b7f7-d2c59c520415"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkplant_rkPlantOfficer}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="106" y="1" width="72" height="26" uuid="7c32016e-485d-462a-a491-7b7b3ee6e440"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkplant_rkPlantTechnition}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="179" y="1" width="49" height="26" uuid="26382968-170a-4ac5-a2c3-5ef02345affc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkplant_rkPlantContract}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="228" y="1" width="36" height="26" uuid="1ecd58d6-36fc-4218-87ab-81c04ad3c9cf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkplant_rkPlantTotal}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="265" y="1" width="36" height="26" uuid="b2b62bab-16d9-40b5-ab01-42eb0362777d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkplant_rkPlantNewCase}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="412" y="1" width="64" height="26" uuid="4c51d8a8-0830-4983-8abc-f17aa50729a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkplant_rkPlantFemale}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="476" y="1" width="35" height="26" uuid="c292aa61-43b8-43ed-8be6-75341c301e2a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkplant_rkPlantMale}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="2" y="1" width="45" height="26" uuid="1aed7dd6-5839-49df-bbad-910005d84379"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkplant_rkPlantMonth} + "/" +$F{rkplant_rkPlantYear}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="512" y="1" width="42" height="26" uuid="5ab8ca7c-e405-4312-b5af-773632e94e06"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkplant_rkPlantLTI}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="344" y="1" width="68" height="26" uuid="aa6c4d56-24dd-4e11-ae88-6b16f8014570"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkplant_rkPlantDresing}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="301" y="1" width="43" height="26" uuid="0aa3be4b-2e88-4aa6-b177-c0d88f617dd7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkplant_rkPlantOldCase1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="1" height="28" uuid="b4a9a8dc-daeb-47ff-8ee4-895dd0916b99"/>
+			</line>
+			<line>
+				<reportElement x="554" y="-1" width="1" height="29" uuid="f6d5c90f-d9db-487c-a70b-9ce4f8a9ec21"/>
+			</line>
+			<line>
+				<reportElement x="-1" y="27" width="555" height="1" uuid="588c9bed-20a0-4a74-bfd2-3b967cc2cced"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="22">
+			<staticText>
+				<reportElement x="-1" y="1" width="48" height="20" uuid="9bb7cd13-9eb9-4ef6-b2e0-7830069b80e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="ba672acc-12f6-48af-b340-a0681495ac76"/>
+			</line>
+			<line>
+				<reportElement x="0" y="21" width="555" height="1" uuid="d2db3110-0245-40ee-8cf8-e5f0860bab7c"/>
+			</line>
+			<line>
+				<reportElement x="47" y="1" width="1" height="21" uuid="7a00755d-5c06-4bed-9cb3-c97111552285"/>
+			</line>
+			<line>
+				<reportElement x="104" y="1" width="1" height="21" uuid="e33c94a3-1e2d-4579-a7e5-ce994b79ee4d"/>
+			</line>
+			<line>
+				<reportElement x="228" y="1" width="1" height="21" uuid="43166469-424b-44ad-a36b-3d2735d8b214"/>
+			</line>
+			<line>
+				<reportElement x="178" y="1" width="1" height="21" uuid="d6891f02-5ca6-4651-8b08-5336a1338987"/>
+			</line>
+			<line>
+				<reportElement x="264" y="1" width="1" height="21" uuid="72440b78-34a1-44ea-880f-f3b2c6b471fa"/>
+			</line>
+			<line>
+				<reportElement x="301" y="1" width="1" height="21" uuid="f01af683-963b-4122-a467-01afd96a0feb"/>
+			</line>
+			<line>
+				<reportElement x="344" y="0" width="1" height="21" uuid="71397509-a07c-4c8b-a146-dc8ba64d63be"/>
+			</line>
+			<line>
+				<reportElement x="411" y="0" width="1" height="21" uuid="0a4f1f9a-b880-4f53-98f7-f74cb293ba03"/>
+			</line>
+			<line>
+				<reportElement x="475" y="1" width="1" height="21" uuid="c59bc757-17d7-4970-8b57-505d2e5c6cfe"/>
+			</line>
+			<line>
+				<reportElement x="511" y="0" width="1" height="21" uuid="1c742dd2-c90a-4888-ba24-1d5b155465ef"/>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="1" height="21" uuid="ef8a6e43-ac5b-4f40-b061-f0cde48bd3f9"/>
+			</line>
+			<line>
+				<reportElement x="554" y="1" width="1" height="21" uuid="3f4577e2-d1bd-4d41-bd9e-8a37c8bbc846"/>
+			</line>
+		</band>
+	</columnFooter>
+</jasperReport>

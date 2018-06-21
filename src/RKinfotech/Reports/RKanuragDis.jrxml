@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="52d17070-17d3-4ff2-9101-f7c940c73f93">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="d93fa275-04f7-4c72-973e-31a776546cb1"/>
+	<parameter name="rkYear" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2017"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     rkanagar.`ID` AS rkanagar_ID,
+     rkanagar.`rkAnagarMale` AS rkanagar_rkAnagarMale,
+     rkanagar.`rkAnagarFemale` AS rkanagar_rkAnagarFemale,
+     rkanagar.`rkAnagarChild` AS rkanagar_rkAnagarChild,
+     rkanagar.`rkAnagarIPD` AS rkanagar_rkAnagarIPD,
+     rkanagar.`rkAnagarIID` AS rkanagar_rkAnagarIID,
+     rkanagar.`rkAnagarSOW` AS rkanagar_rkAnagarSOW,
+     rkanagar.`rkAnagarECU` AS rkanagar_rkAnagarECU,
+     rkanagar.`rkAnagarAPT` AS rkanagar_rkAnagarAPT,
+     rkanagar.`rkAnagarPTS` AS rkanagar_rkAnagarPTS,
+     rkanagar.`rkAnagarMonth` AS rkanagar_rkAnagarMonth,
+     rkanagar.`rkAnagarYear` AS rkanagar_rkAnagarYear,
+     rkanagar.`rkAnagarEYE` AS rkanagar_rkAnagarEYE
+FROM
+     `rkanagar` rkanagar where rkAnagarYear = $P{rkYear} ORDER BY rkAnagarMonth DESC]]>
+	</queryString>
+	<field name="rkanagar_ID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rkanagar_rkAnagarMale" class="java.lang.String"/>
+	<field name="rkanagar_rkAnagarFemale" class="java.lang.String"/>
+	<field name="rkanagar_rkAnagarChild" class="java.lang.String"/>
+	<field name="rkanagar_rkAnagarIPD" class="java.lang.String"/>
+	<field name="rkanagar_rkAnagarIID" class="java.lang.String"/>
+	<field name="rkanagar_rkAnagarSOW" class="java.lang.String"/>
+	<field name="rkanagar_rkAnagarECU" class="java.lang.String"/>
+	<field name="rkanagar_rkAnagarAPT" class="java.lang.String"/>
+	<field name="rkanagar_rkAnagarPTS" class="java.lang.String"/>
+	<field name="rkanagar_rkAnagarMonth" class="java.lang.String"/>
+	<field name="rkanagar_rkAnagarYear" class="java.lang.String"/>
+	<field name="rkanagar_rkAnagarEYE" class="java.lang.String"/>
+	<variable name="Total" class="java.lang.Integer"/>
+	<title>
+		<band height="94" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="0" width="786" height="94" uuid="c27e2436-1021-4dd1-a2be-da945bade098"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Annual Report of Mine workers & Their Family treated  at Anurag Nagar Dispensary uring Year]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="632" y="43" width="129" height="40" uuid="3d3121c7-d101-4793-bb34-544c2dea9cea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rkYear}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="278" height="20" uuid="95e1348a-619e-4609-a239-4eebe450ee18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OPD]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="-1" width="788" height="1" uuid="1b1cfe01-b59a-43b6-a42d-45884e119ed8"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="20" width="29" height="20" uuid="1ff67198-1e46-46b4-b3bc-21a06cdbf0cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="20" width="59" height="20" uuid="74ef44ef-1583-416a-a938-a1439eca2c35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Year]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="20" width="42" height="20" uuid="42d6503f-d5b2-4cab-a65e-87435666c51d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Male]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="20" width="62" height="20" uuid="155f8c95-e204-462f-a2b3-dc5609617264"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Female]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="229" y="20" width="49" height="20" uuid="fe70311f-4bdf-47fa-911d-8cc4ab8b4a80"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Child]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="0" width="66" height="40" uuid="8626f2ff-5757-4f2e-a12b-7da7d224f29e"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Incision
+Drainage
+Dressing]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="412" y="0" width="66" height="40" uuid="69b8b975-a613-4b18-92ca-2d12b0982822"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Suturing
+Of
+Wounds]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="570" y="0" width="66" height="40" uuid="707217d4-a8af-4880-becd-70690a8ffc5e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Eye 
+Check-UP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="722" y="0" width="66" height="40" uuid="ecfbed11-2bb1-44ad-8b1a-7f7bf6995e5b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No.of Pt.From 
+S.Pada & Near by 
+Villages Treated]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="647" y="0" width="66" height="40" uuid="c1fb6baa-8521-406c-91a4-1d1afa66c6a0"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Accu
+Pressure 
+Therapy]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="491" y="0" width="66" height="40" uuid="b7927c91-9caa-4fba-a93b-6e07de2b6ab9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ent 
+Check-UP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="0" width="36" height="40" uuid="364f8231-7252-4cce-8a27-23de1df2493f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IPD]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="41" width="788" height="1" uuid="2b847033-ec7a-4352-9004-f4da77225d18"/>
+			</line>
+			<line>
+				<reportElement x="104" y="20" width="1" height="21" uuid="a16faa14-55d3-458f-b2a4-36fcad8de27d"/>
+			</line>
+			<line>
+				<reportElement x="147" y="20" width="1" height="21" uuid="455b1227-f51c-4fb5-8245-54d844e48e9b"/>
+			</line>
+			<line>
+				<reportElement x="218" y="20" width="1" height="21" uuid="6c1a9aa3-e3be-4338-87bd-972a670b6141"/>
+			</line>
+			<line>
+				<reportElement x="157" y="20" width="1" height="21" uuid="99c85ed9-a1d1-47c7-b755-917400e804e5"/>
+			</line>
+			<line>
+				<reportElement x="228" y="20" width="1" height="21" uuid="b05cf526-c18d-43a8-95c3-e399b3c58a84"/>
+			</line>
+			<line>
+				<reportElement x="276" y="0" width="1" height="41" uuid="37c6d825-0ea6-4ef0-9c61-95c28b24bb2c"/>
+			</line>
+			<line>
+				<reportElement x="286" y="0" width="1" height="40" uuid="112545f8-8589-409d-a7d3-e50cea501443"/>
+			</line>
+			<line>
+				<reportElement x="321" y="-1" width="1" height="41" uuid="3f0bb5d2-0053-4a38-9a61-e59ddbac9a57"/>
+			</line>
+			<line>
+				<reportElement x="332" y="0" width="1" height="40" uuid="cff82d3d-3b88-4a62-af73-e5d81d83e146"/>
+			</line>
+			<line>
+				<reportElement x="397" y="0" width="1" height="40" uuid="dc5dee8a-5867-476c-ab27-fb6159189d4a"/>
+			</line>
+			<line>
+				<reportElement x="411" y="0" width="1" height="40" uuid="8e4c67a6-fc85-4e2b-9b86-71fb4e9591e9"/>
+			</line>
+			<line>
+				<reportElement x="476" y="0" width="1" height="40" uuid="115383ed-7994-49d6-82d0-1314394a3672"/>
+			</line>
+			<line>
+				<reportElement x="490" y="0" width="1" height="40" uuid="6fdc0c13-739f-4b2c-9690-1259ed29a384"/>
+			</line>
+			<line>
+				<reportElement x="555" y="-1" width="1" height="41" uuid="8afd662d-d7eb-42e4-810b-5bddab270700"/>
+			</line>
+			<line>
+				<reportElement x="570" y="0" width="1" height="40" uuid="a1575d81-6418-4393-90d9-c5f3cbaa1bda"/>
+			</line>
+			<line>
+				<reportElement x="635" y="0" width="1" height="40" uuid="a8ed97c6-3132-4700-9cc9-f363a8775fa4"/>
+			</line>
+			<line>
+				<reportElement x="646" y="0" width="1" height="40" uuid="5284e880-cec0-4f8a-86fc-2da36640625a"/>
+			</line>
+			<line>
+				<reportElement x="711" y="-1" width="1" height="41" uuid="59437811-e14a-4d51-b000-ddd021d437b9"/>
+			</line>
+			<line>
+				<reportElement x="722" y="0" width="1" height="40" uuid="47680722-15ce-4d19-b7bc-9caade20e2d0"/>
+			</line>
+			<line>
+				<reportElement x="788" y="-94" width="1" height="135" uuid="d6ca0423-89f8-4a71-abf6-584790a16571"/>
+			</line>
+			<line>
+				<reportElement x="97" y="20" width="1" height="21" uuid="276bd2a8-0a05-4e4b-80d5-f07500f06868"/>
+			</line>
+			<line>
+				<reportElement x="37" y="20" width="1" height="21" uuid="bf078b9f-5e22-4b51-b938-d598b3e43872"/>
+			</line>
+			<line>
+				<reportElement x="27" y="20" width="1" height="21" uuid="bfe9050d-0b13-45ae-8bd9-8c57fc84a3c1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-94" width="1" height="136" uuid="0cea6f15-b66e-426d-b3b9-727c03e28835"/>
+			</line>
+			<line>
+				<reportElement x="0" y="20" width="276" height="1" uuid="fa5a71c4-a2db-4da6-9b02-a98d1ed3331d"/>
+			</line>
+			<line>
+				<reportElement x="1" y="-94" width="788" height="1" uuid="0054c869-d6af-46f9-a12d-005be21bccd2"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="29" y="1" width="68" height="26" uuid="da34c9ef-23ee-4fac-b7f7-d2c59c520415"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkanagar_rkAnagarMonth}+"/"+$F{rkanagar_rkAnagarYear}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="105" y="1" width="43" height="26" uuid="7c32016e-485d-462a-a491-7b7b3ee6e440"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkanagar_rkAnagarMale}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="158" y="1" width="62" height="26" uuid="26382968-170a-4ac5-a2c3-5ef02345affc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkanagar_rkAnagarFemale}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="229" y="1" width="49" height="26" uuid="aba8da5d-ed6b-4bb6-939c-23bf7e2b64e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkanagar_rkAnagarChild}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="287" y="1" width="36" height="26" uuid="1ecd58d6-36fc-4218-87ab-81c04ad3c9cf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkanagar_rkAnagarIPD}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="333" y="1" width="66" height="26" uuid="b2b62bab-16d9-40b5-ab01-42eb0362777d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkanagar_rkAnagarIID}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="412" y="1" width="66" height="26" uuid="4c51d8a8-0830-4983-8abc-f17aa50729a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkanagar_rkAnagarSOW}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="491" y="1" width="66" height="26" uuid="c292aa61-43b8-43ed-8be6-75341c301e2a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkanagar_rkAnagarECU}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="571" y="1" width="66" height="26" uuid="2648a703-d27e-4a59-9aa9-623072d730b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkanagar_rkAnagarEYE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="647" y="1" width="66" height="26" uuid="5e606fe0-abf1-42a9-9ae4-509767c0cc91"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkanagar_rkAnagarAPT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="722" y="1" width="66" height="26" uuid="2fc1b07f-412b-4aaf-92d4-7901dbc8bfed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkanagar_rkAnagarPTS}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="-1" y="1" width="28" height="26" uuid="1aed7dd6-5839-49df-bbad-910005d84379"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="1" height="28" uuid="b910fdb9-f69c-4034-a3da-b4cc8666f410"/>
+			</line>
+			<line>
+				<reportElement x="788" y="-2" width="1" height="30" uuid="c3587e81-27bc-4c32-99f5-676b738acfe4"/>
+			</line>
+			<line>
+				<reportElement x="0" y="27" width="789" height="1" uuid="ebeb1c4b-74f4-4496-b164-8fded53a48ea"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="22">
+			<staticText>
+				<reportElement x="-1" y="1" width="98" height="20" uuid="9bb7cd13-9eb9-4ef6-b2e0-7830069b80e8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="789" height="1" uuid="ba672acc-12f6-48af-b340-a0681495ac76"/>
+			</line>
+			<line>
+				<reportElement x="0" y="21" width="789" height="1" uuid="d2db3110-0245-40ee-8cf8-e5f0860bab7c"/>
+			</line>
+			<line>
+				<reportElement x="105" y="1" width="1" height="21" uuid="7a00755d-5c06-4bed-9cb3-c97111552285"/>
+			</line>
+			<line>
+				<reportElement x="148" y="1" width="1" height="21" uuid="e33c94a3-1e2d-4579-a7e5-ce994b79ee4d"/>
+			</line>
+			<line>
+				<reportElement x="219" y="1" width="1" height="21" uuid="43166469-424b-44ad-a36b-3d2735d8b214"/>
+			</line>
+			<line>
+				<reportElement x="158" y="1" width="1" height="21" uuid="d6891f02-5ca6-4651-8b08-5336a1338987"/>
+			</line>
+			<line>
+				<reportElement x="229" y="1" width="1" height="21" uuid="72440b78-34a1-44ea-880f-f3b2c6b471fa"/>
+			</line>
+			<line>
+				<reportElement x="277" y="0" width="1" height="21" uuid="6151ffac-c3a7-4d3a-bcd5-5abc6cc300eb"/>
+			</line>
+			<line>
+				<reportElement x="287" y="0" width="1" height="21" uuid="f01af683-963b-4122-a467-01afd96a0feb"/>
+			</line>
+			<line>
+				<reportElement x="322" y="0" width="1" height="21" uuid="3bdefaa0-35b7-4d97-8c93-49640fd6193f"/>
+			</line>
+			<line>
+				<reportElement x="333" y="0" width="1" height="21" uuid="71397509-a07c-4c8b-a146-dc8ba64d63be"/>
+			</line>
+			<line>
+				<reportElement x="398" y="0" width="1" height="21" uuid="0a4f1f9a-b880-4f53-98f7-f74cb293ba03"/>
+			</line>
+			<line>
+				<reportElement x="412" y="0" width="1" height="21" uuid="c59bc757-17d7-4970-8b57-505d2e5c6cfe"/>
+			</line>
+			<line>
+				<reportElement x="477" y="0" width="1" height="21" uuid="1c742dd2-c90a-4888-ba24-1d5b155465ef"/>
+			</line>
+			<line>
+				<reportElement x="491" y="0" width="1" height="21" uuid="5eedd25d-9ff4-4c7f-97e2-50804b3d6f30"/>
+			</line>
+			<line>
+				<reportElement x="556" y="0" width="1" height="21" uuid="3e7552dc-5814-44fb-af79-d93992bb8065"/>
+			</line>
+			<line>
+				<reportElement x="571" y="0" width="1" height="21" uuid="b826a230-e47a-45d7-93ff-18db947eac84"/>
+			</line>
+			<line>
+				<reportElement x="636" y="0" width="1" height="21" uuid="ccfa6c68-78e8-40b8-8a91-35203d8c1738"/>
+			</line>
+			<line>
+				<reportElement x="647" y="0" width="1" height="21" uuid="0ee03df8-3291-4fff-9f62-321bc511b571"/>
+			</line>
+			<line>
+				<reportElement x="712" y="0" width="1" height="21" uuid="b029f253-3a93-4322-8a53-b750d2d24092"/>
+			</line>
+			<line>
+				<reportElement x="723" y="0" width="1" height="21" uuid="d0c0a943-d169-49e1-ab0f-ab8006c0708f"/>
+			</line>
+			<line>
+				<reportElement x="788" y="1" width="1" height="21" uuid="f107b8eb-598c-45c7-a713-3655c016a5de"/>
+			</line>
+			<line>
+				<reportElement x="97" y="0" width="1" height="21" uuid="8888a665-946c-49d5-867d-ef3df4779f14"/>
+			</line>
+			<line>
+				<reportElement x="0" y="1" width="1" height="21" uuid="ef8a6e43-ac5b-4f40-b061-f0cde48bd3f9"/>
+			</line>
+		</band>
+	</columnFooter>
+</jasperReport>

@@ -151,7 +151,7 @@ public class RKPurchase extends javax.swing.JInternalFrame {
             String rkDOB = (DOB.getYear() + 1900) + "-" + (DOB.getMonth() + 1) + "-" + DOB.getDate();
             rktxtDate.setText(rkDOB);
             
-            int count = db.DML("INSERT INTO `rkpurchase`(`rkPurchasePartyName`, `rkPurchaseDate`, `rkPurchaseAmount`, `rkPurchaseRemark`, `rkPurchasePartyID`) VALUES (?,?,?,?,?)", new JTextField[]{rkPartyName,rktxtDate,rkAmount,rkRemark,rkPartyID});
+            int count = db.DML("INSERT INTO `rkpurchase`(`rkPurchasePartyName`, `rkPurchaseDate`, `rkPurchaseAmount`, `rkPurchaseRemark`, `rkPurchasePartyID`,`rkPurchaseBillNo`) VALUES (?,?,?,?,?,?)", new JTextField[]{rkPartyName,rktxtDate,rkAmount,rkRemark,rkPartyID,rkBillNo});
             if (count > 0) {
                 JOptionPane.showMessageDialog(this, "Record Saved Successfully.....", "Saved Record", JOptionPane.INFORMATION_MESSAGE);
             }

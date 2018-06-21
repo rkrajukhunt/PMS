@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2606d375-9ff9-4e36-88e6-50c24cc9713d">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="69f29a1e-7442-451b-819c-1b16ab4732a3"/>
+	<parameter name="rkMonth" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="rkYear" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     rkmts.`ID` AS rkmts_ID,
+     rkmts.`rkCode` AS rkmts_rkCode,
+     rkmts.`rkName` AS rkmts_rkName,
+     rkmts.`rkMedicine` AS rkmts_rkMedicine,
+     rkmts.`rkPlab` AS rkmts_rkPlab,
+     rkmts.`rkXray` AS rkmts_rkXray,
+     rkmts.`rkTotal` AS rkmts_rkTotal,
+     rkmts.`rkMonth` AS rkmts_rkMonth,
+     rkmts.`rkYear` AS rkmts_rkYear,
+     rkmts.`rkAmbulance` AS rkmts_rkAmbulance
+FROM
+     `rkdsps` rkmts where rkMonth = $P{rkMonth} AND rkYear =  $P{rkYear}]]>
+	</queryString>
+	<field name="rkmts_ID" class="java.lang.Integer"/>
+	<field name="rkmts_rkCode" class="java.lang.String"/>
+	<field name="rkmts_rkName" class="java.lang.String"/>
+	<field name="rkmts_rkMedicine" class="java.lang.Integer"/>
+	<field name="rkmts_rkPlab" class="java.lang.Integer"/>
+	<field name="rkmts_rkXray" class="java.lang.Integer"/>
+	<field name="rkmts_rkTotal" class="java.lang.Integer"/>
+	<field name="rkmts_rkMonth" class="java.lang.Integer"/>
+	<field name="rkmts_rkYear" class="java.lang.Integer"/>
+	<field name="rkmts_rkAmbulance" class="java.lang.Integer"/>
+	<title>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="49" uuid="a44d4499-7415-4717-af3b-1c6ea6d64402"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLINICAL RECOVERY FOR DPS STAFF]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="9b7c197b-c3b8-413f-a0a4-d855d546b2ae"/>
+			</line>
+			<line>
+				<reportElement x="0" y="48" width="555" height="1" uuid="58af67c5-95a3-4040-b3b2-56009005d417"/>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="-49" width="1" height="71" uuid="e393e03c-f1a7-4c70-a55f-a495853863e9"/>
+			</line>
+			<line>
+				<reportElement x="554" y="-49" width="1" height="72" uuid="3b46b421-3914-4f6b-8752-0b1afbcce2c7"/>
+			</line>
+			<line>
+				<reportElement x="0" y="22" width="555" height="1" uuid="af99fd33-b297-485a-bcee-5db7550961f0"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="0" width="40" height="22" uuid="9cdfb621-040b-45fa-b5d5-6e540d61c205"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="0" width="74" height="22" uuid="a79321b1-e93d-407a-808e-0c644d935baa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="0" width="149" height="22" uuid="bb3bb77e-806c-4ef4-9df5-9ebb228e0434"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="0" width="77" height="22" uuid="2c737a32-e861-47ca-be78-8e11951b9f86"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Medicines]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="0" width="47" height="22" uuid="ab3190a8-a35a-45f9-9ef3-f1ee2e2a7ec0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[P-Lab]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="0" width="43" height="22" uuid="1d593a9d-1023-4336-b8dc-5dd4a60d13f6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[X-Ray]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="0" width="71" height="22" uuid="024e163c-900b-4bab-b04a-30e7d417cb99"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ambulance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="502" y="0" width="53" height="22" uuid="bf46d123-6d11-4724-a82c-40bd6d2823e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="21" width="555" height="1" uuid="efbf8342-bf6d-4d12-b4db-c45042b795b6"/>
+			</line>
+			<textField>
+				<reportElement x="1" y="0" width="40" height="22" uuid="64a18fb5-809c-4b26-8e9c-d5af6ca8cd1a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="0" width="74" height="22" uuid="84539f33-ec8a-4cff-85c1-264d144e436a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkmts_rkCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="0" width="149" height="22" uuid="9c1678eb-598d-40e4-8170-8726902482fe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkmts_rkName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="264" y="0" width="77" height="22" uuid="3aa86670-f0dd-4faa-80a4-c6413daadcbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkmts_rkMedicine}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="341" y="0" width="47" height="22" uuid="08f7de51-ae47-4731-a106-6af34a61a10d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkmts_rkPlab}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="388" y="0" width="43" height="22" uuid="35f87d4f-5057-4329-8d6e-023f5c0d034e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkmts_rkXray}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="0" width="71" height="22" uuid="48869251-6ba9-45ba-a6d1-c2fb909c7cac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkmts_rkAmbulance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="502" y="0" width="53" height="22" uuid="be186e84-ca83-4d14-8dbe-a26b2fdf1aa0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkmts_rkTotal}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="554" y="-1" width="1" height="23" uuid="a8e1d3f9-0dea-4c9f-af9e-0278d6de6c20"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-1" width="1" height="23" uuid="b656e74e-d7a5-416c-816f-3adaae9ded27"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="21" splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

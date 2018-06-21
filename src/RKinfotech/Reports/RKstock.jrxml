@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d855f5ea-6840-41a9-b4b6-5db540d60b53">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     rkstock.`ID` AS rkstock_ID,
+     rkstock.`rkStockName` AS rkstock_rkStockName,
+     rkstock.`rkStockParticular` AS rkstock_rkStockParticular,
+     rkstock.`rkStockBatchNo` AS rkstock_rkStockBatchNo,
+     rkstock.`rkStockDate` AS rkstock_rkStockDate,
+     rkstock.`rkStockExpDate` AS rkstock_rkStockExpDate,
+     rkstock.`rkStockAmount` AS rkstock_rkStockAmount,
+     rkstock.`rkStockQuntities` AS rkstock_rkStockQuntities,
+     rkstock.`rkStockBillNo` AS rkstock_rkStockBillNo
+FROM
+     `rkstock` rkstock]]>
+	</queryString>
+	<field name="rkstock_ID" class="java.lang.Integer"/>
+	<field name="rkstock_rkStockName" class="java.lang.String"/>
+	<field name="rkstock_rkStockParticular" class="java.lang.String"/>
+	<field name="rkstock_rkStockBatchNo" class="java.lang.String"/>
+	<field name="rkstock_rkStockDate" class="java.sql.Date"/>
+	<field name="rkstock_rkStockExpDate" class="java.sql.Date"/>
+	<field name="rkstock_rkStockAmount" class="java.lang.String"/>
+	<field name="rkstock_rkStockQuntities" class="java.lang.String"/>
+	<field name="rkstock_rkStockBillNo" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="4d1b2ae8-19c9-4083-8671-ff3ffd9c0841"/>
+				<staticText>
+					<reportElement x="20" y="20" width="268" height="43" forecolor="#FFFFFF" uuid="22d85f88-9d6f-4961-a9fd-bb4528f6560c"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Stock Report]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="920ab56b-7238-4d37-9bfd-05f06e84ba8d"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="217" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="f6caac35-5e72-4183-8514-651f7f6efcea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="217" y="0" width="86" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6a394569-6171-48ba-bee6-321f96aaedd5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Batch No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="303" y="0" width="155" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ebeaa465-7bae-4149-bceb-16d2b4a35657"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ex.Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="458" y="0" width="97" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5d9924d4-237f-440e-9b04-e51fe90903a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quntities]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="8dc38dfd-578f-4dd4-8020-86fe0bf3aa4e"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="217" height="20" uuid="8b9cf0ae-d777-46ff-907d-a7ffac24cfb6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkstock_rkStockName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="217" y="0" width="86" height="20" uuid="e7871106-06c0-40df-b6c5-dfd34d7a3341"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkstock_rkStockBatchNo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="303" y="0" width="156" height="20" uuid="36edccd8-39b8-4a1e-b321-f998fc9ab32b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkstock_rkStockExpDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="458" y="0" width="97" height="20" uuid="553fa1f9-f66a-4048-a531-8181dbf89fd8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkstock_rkStockQuntities}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="0c8f3d05-ad27-4cb8-8fd1-2913ff4d0dcf"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="576cd9c5-40c3-416b-9ae0-88aee2a7898a"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="b7786b58-4d00-4395-9469-fb31950ffba6"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

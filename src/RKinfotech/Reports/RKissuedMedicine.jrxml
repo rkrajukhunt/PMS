@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2c6b35a9-fe4d-4d04-9842-930911d0f349">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="rkMonth" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="rkYear" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     rkissued.`rkissuedName` AS rkissued_rkissuedName,
+     rkissued.`rkissuedBatchNo` AS rkissued_rkissuedBatchNo,
+     rkissued.`rkissuedExDate` AS rkissued_rkissuedExDate,
+     rkissued.`rkissuedStock` AS rkissued_rkissuedStock,
+     rkissued.`rkissuedMonth` AS rkissued_rkissuedMonth,
+     rkissued.`rkissuedYear` AS rkissued_rkissuedYear,
+     rkissued.`rkissuedDate` AS rkissued_rkissuedDate,
+     rkissued.`ID` AS rkissued_ID
+FROM
+     `rkissued` rkissued where rkissuedMonth =  $P{rkMonth} AND rkissuedYear = $P{rkYear}]]>
+	</queryString>
+	<field name="rkissued_rkissuedName" class="java.lang.String"/>
+	<field name="rkissued_rkissuedBatchNo" class="java.lang.String"/>
+	<field name="rkissued_rkissuedExDate" class="java.lang.String"/>
+	<field name="rkissued_rkissuedStock" class="java.lang.String"/>
+	<field name="rkissued_rkissuedMonth" class="java.lang.Integer"/>
+	<field name="rkissued_rkissuedYear" class="java.lang.Integer"/>
+	<field name="rkissued_rkissuedDate" class="java.sql.Timestamp"/>
+	<field name="rkissued_ID" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="310f1fd3-30fb-45fc-bb16-c87a96c8b24d"/>
+				<staticText>
+					<reportElement x="20" y="20" width="526" height="43" forecolor="#FFFFFF" uuid="09b1662a-0c86-41dd-ab88-96fa834e6e3e"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Issued Medicine Report]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="ccb99a20-70ff-4be5-a04d-eaf70e451e97"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="16" y="0" width="133" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="acb58182-3c02-4629-8371-8d4feb3f3109"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Medicine Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="149" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="8eda85f9-00f6-4665-a6d5-6c773267c67b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Batch No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="241" y="0" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7d5f8ac7-6f63-4d58-ba6c-5d88d5f04277"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ex.Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="332" y="0" width="80" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="fb7e3f59-1d59-4ba1-9b00-875a18d2523c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Issued Stock]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="412" y="0" width="143" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="77deb6f6-0f98-4b32-bd92-f52fc40ffedc"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Issued Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="16" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="8e0afbcd-2e71-4613-bc78-3b9625078cfc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="0a30c93d-27f1-49cd-8d8a-facbe7ace5cb"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="16" height="19" uuid="2c23b233-518b-49e9-af7f-7c0a38fa3fb6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="16" y="0" width="133" height="20" uuid="2db32d15-0a2c-4c68-a099-d575d9593e07"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkissued_rkissuedName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="149" y="0" width="92" height="20" uuid="37f5b7e2-d27b-4dba-aa81-2deefeef69bf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkissued_rkissuedBatchNo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="241" y="0" width="92" height="20" uuid="ca082ced-0634-4379-81b7-c955aace0778"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkissued_rkissuedExDate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="332" y="0" width="80" height="20" uuid="8dfad1d3-719b-4cb9-8e59-0ba79b4cda1b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkissued_rkissuedStock}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="412" y="0" width="143" height="20" uuid="d3b0fb34-109b-4a01-aaf1-674c46a70cf3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rkissued_rkissuedDate}.toString()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="900a3719-95d6-4b0f-9c48-1b6f8fb2b37a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="007cf1cb-3ae8-425b-81cb-9ea2019de099"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="f3e5a115-b201-496d-ae29-79585ee45ec4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

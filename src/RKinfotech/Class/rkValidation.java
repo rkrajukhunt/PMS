@@ -122,4 +122,19 @@ public final class rkValidation {
                 + "<tr><td>"+error+"</td><tr>"
                 + "</table>";
     }
+    
+    public static String printErrorStatic(Object error){
+        return "<html>"
+                + "<table weight='250' height='250'>"
+                + "<tr><td>"+error+"</td><tr>"
+                + "</table>";
+    }
+    
+    public static String printErrorStatic(String message,String errorClass){
+        return "<html>"
+                + "<table weight='250' height='250' border='1'>"
+                + "<tr><td>Error Class Name</td><td>"+errorClass+"</td><tr>"
+                + "<tr><td>Message</td><td>"+message+"</td><tr>"
+                + "</table>";
+    }
 }

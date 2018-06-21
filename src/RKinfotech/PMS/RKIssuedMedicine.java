@@ -55,6 +55,8 @@ public class RKIssuedMedicine extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         rkPresentMedicine = new javax.swing.JTextField();
         rkSave = new javax.swing.JButton();
+        rkMonth = new javax.swing.JComboBox<>();
+        rkYear = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -63,7 +65,6 @@ public class RKIssuedMedicine extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 1, 14)); // NOI18N
         jLabel4.setText("Name");
 
-        rkNameMedicine.setEditable(true);
         rkNameMedicine.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selected Medicine" }));
         rkNameMedicine.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -79,6 +80,7 @@ public class RKIssuedMedicine extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 1, 14)); // NOI18N
         jLabel6.setText("Exp.Date");
 
+        rkExpDate.setEditable(false);
         rkExpDate.setEnabled(false);
 
         rkAvailableMedicine.setText("00");
@@ -113,6 +115,12 @@ public class RKIssuedMedicine extends javax.swing.JInternalFrame {
             }
         });
 
+        rkMonth.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        rkMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+
+        rkYear.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
+        rkYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Year", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040", "2041", "2042", "2043", "2044", "2045", "2046", "2047", "2048", "2049", "2050", "2051", "2052", "2053", "2054", "2055", "2056", "2057", "2058", "2059", "2060", "2061", "2062", "2063", "2064", "2065", "2066", "2067", "2068", "2069", "2070", "2071", "2072", "2073", "2074", "2075", "2076", "2077", "2078", "2079", "2080", "2081", "2082", "2083", "2084", "2085", "2086", "2087", "2088", "2089", "2090", "2091", "2092", "2093", "2094", "2095", "2096", "2097", "2098", "2099" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,6 +133,16 @@ public class RKIssuedMedicine extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rkAvailableMedicine))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(26, 26, 26)
+                        .addComponent(rkIssuedMedicine))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rkPresentMedicine)
+                            .addComponent(rkSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel6)
@@ -136,15 +154,9 @@ public class RKIssuedMedicine extends javax.swing.JInternalFrame {
                             .addComponent(rkBatchNo, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(26, 26, 26)
-                        .addComponent(rkIssuedMedicine))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rkPresentMedicine)
-                            .addComponent(rkSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(rkMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rkYear, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -154,6 +166,10 @@ public class RKIssuedMedicine extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rkNameMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rkMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rkYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -210,7 +226,7 @@ public class RKIssuedMedicine extends javax.swing.JInternalFrame {
                 rkPresentMedicine.setText("00");
             }
         } catch (SQLException e) {
-               JOptionPane.showMessageDialog(this,val.printError(e.getClass(),e.getMessage(),getClass().getName()),"Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, val.printError(e.getClass(), e.getMessage(), getClass().getName()), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_rkNameMedicineItemStateChanged
 
@@ -227,24 +243,31 @@ public class RKIssuedMedicine extends javax.swing.JInternalFrame {
                 rkIssuedMedicine.setText("0");
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this,val.printError(e.getClass(),e.getMessage(),getClass().getName()),"Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, val.printError(e.getClass(), e.getMessage(), getClass().getName()), "Error", JOptionPane.ERROR_MESSAGE);
             rkIssuedMedicine.setText("0");
         }
     }//GEN-LAST:event_rkIssuedMedicineKeyReleased
 
     private void rkSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rkSaveActionPerformed
-        if(Integer.valueOf(rkPresentMedicine.getText())>0){
-            if("00".equals(rkIssuedMedicine.getText())){
-                
-            }else{
-                int count = db.DML("UPDATE `rkstock` SET `rkStockQuntities`= ? WHERE `ID` = "+rkMedicineName.get(rkNameMedicine.getSelectedItem()),new JTextField[]{rkPresentMedicine});
-                if(count>0)
-                    JOptionPane.showMessageDialog(this,"Medicine Issue Successfullyy..","Medicine Issue",JOptionPane.INFORMATION_MESSAGE);
-                dispose();
+        if (rkMonth.getSelectedIndex() > 0 && rkYear.getSelectedIndex() > 0) {
+            if (Integer.valueOf(rkPresentMedicine.getText()) >= 0) {
+                if ("00".equals(rkIssuedMedicine.getText())) {
+
+                } else {
+                    db.DML("INSERT INTO `rkissued`(`rkissuedName`, `rkissuedBatchNo`, `rkissuedExDate`, `rkissuedStock`, `rkissuedMonth`, `rkissuedYear`) VALUES ('"+rkNameMedicine.getSelectedItem()+"',?,?,?,"+rkMonth.getSelectedItem()+","+rkYear.getSelectedItem()+")",new JTextField[]{rkBatchNo,rkExpDate,rkIssuedMedicine});
+                    int count = db.DML("UPDATE `rkstock` SET `rkStockQuntities`= ?,`rkStockBatchNo`=?,`rkStockMonth`=" + rkMonth.getSelectedItem() + ",`rkStockYear`=" + rkYear.getSelectedItem() + "  WHERE `ID` = " + rkMedicineName.get(rkNameMedicine.getSelectedItem()), new JTextField[]{rkPresentMedicine, rkBatchNo});
+                    if (count > 0) {
+                        JOptionPane.showMessageDialog(this, "Medicine Issue Successfullyy..", "Medicine Issue", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    dispose();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, val.printError("Drug stock can not Available"), "Error", JOptionPane.ERROR_MESSAGE);
             }
-        }else{
-            JOptionPane.showMessageDialog(this,val.printError("Drug Can't Available"),"Error",JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, val.printError("select month and year After click the button"), "Informaion", JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_rkSaveActionPerformed
 
 
@@ -259,17 +282,13 @@ public class RKIssuedMedicine extends javax.swing.JInternalFrame {
     private javax.swing.JTextField rkBatchNo;
     private javax.swing.JTextField rkExpDate;
     private javax.swing.JTextField rkIssuedMedicine;
+    private javax.swing.JComboBox<String> rkMonth;
     private javax.swing.JComboBox<String> rkNameMedicine;
     private javax.swing.JTextField rkPresentMedicine;
     private javax.swing.JButton rkSave;
+    private javax.swing.JComboBox<String> rkYear;
     // End of variables declaration//GEN-END:variables
     rkDatabase db = new rkDatabase();
     rkValidation val = new rkValidation();
     Map<Object, Object> rkMedicineName = new HashMap<>();
-
-    /*JTextField rkMedicineName = new JTextField();
-    JTextField rkMedicineID = new JTextField();
-    JTextField rktxtDate = new JTextField();
-    JTextField rktxtExpDate = new JTextField();
-    JTextField rktxtBillNo = new JTextField();*/
 }

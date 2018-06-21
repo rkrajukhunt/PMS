@@ -1,9 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RKinfotech.PMS;
+
+import RKinfotech.Class.rkConnection;
+import RKinfotech.Class.rkOpen;
+import RKinfotech.Class.rkMD5;
+import RKinfotech.Class.rkDatabase;
+import RKinfotech.Class.rkValidation;
+import java.awt.Toolkit;
+import java.io.File;
+import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -17,9 +35,8 @@ public class RKHome extends javax.swing.JFrame {
     public RKHome() {
         initComponents();
         this.setLocationRelativeTo(null);
-        RKClinical reg = new RKClinical();
-        jDesktopPane1.add(reg);
-        reg.setVisible(true);
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("RKinfotech/Image/RKLogo.png"));
+
     }
 
     /**
@@ -31,27 +48,388 @@ public class RKHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        RKghcl = new javax.swing.JPopupMenu();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        MenuItem = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        MenuItem1 = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        Menu = new javax.swing.JPanel();
+        rkClinical = new javax.swing.JButton();
+        rkMedical = new javax.swing.JButton();
+        rkReports = new javax.swing.JButton();
+        rkSetting = new javax.swing.JButton();
+        rkHome = new javax.swing.JButton();
+        rkLogout = new javax.swing.JButton();
+        Login = new javax.swing.JPanel();
+        RKuserName = new javax.swing.JTextField();
+        RKLogin = new javax.swing.JButton();
+        RKpassword = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        rkDP = new javax.swing.JDesktopPane();
+
+        RKghcl.add(jSeparator1);
+
+        MenuItem.setText("Open GHCL Report");
+        MenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemActionPerformed(evt);
+            }
+        });
+        RKghcl.add(MenuItem);
+        RKghcl.add(jSeparator2);
+
+        MenuItem1.setText("About Software");
+        MenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItem1ActionPerformed(evt);
+            }
+        });
+        RKghcl.add(MenuItem1);
+        RKghcl.add(jSeparator3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("PMS");
+        setBackground(new java.awt.Color(61, 51, 51));
         setForeground(new java.awt.Color(61, 51, 51));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
-        jScrollPane1.setViewportView(jDesktopPane1);
+        Menu.setBackground(new java.awt.Color(61, 51, 51));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
+        rkClinical.setBackground(new java.awt.Color(51, 51, 255));
+        rkClinical.setFont(new java.awt.Font("DejaVu Sans", 3, 14)); // NOI18N
+        rkClinical.setForeground(new java.awt.Color(255, 255, 255));
+        rkClinical.setText("Clinicals");
+        rkClinical.setEnabled(false);
+        rkClinical.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rkClinicalActionPerformed(evt);
+            }
+        });
+
+        rkMedical.setBackground(new java.awt.Color(51, 51, 255));
+        rkMedical.setFont(new java.awt.Font("DejaVu Sans", 3, 14)); // NOI18N
+        rkMedical.setForeground(new java.awt.Color(255, 255, 255));
+        rkMedical.setText("Medical");
+        rkMedical.setEnabled(false);
+        rkMedical.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rkMedicalActionPerformed(evt);
+            }
+        });
+
+        rkReports.setBackground(new java.awt.Color(51, 51, 255));
+        rkReports.setFont(new java.awt.Font("DejaVu Sans", 3, 14)); // NOI18N
+        rkReports.setForeground(new java.awt.Color(255, 255, 255));
+        rkReports.setText("Reports");
+        rkReports.setEnabled(false);
+        rkReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rkReportsActionPerformed(evt);
+            }
+        });
+
+        rkSetting.setBackground(new java.awt.Color(51, 51, 255));
+        rkSetting.setFont(new java.awt.Font("DejaVu Sans", 3, 14)); // NOI18N
+        rkSetting.setForeground(new java.awt.Color(255, 255, 255));
+        rkSetting.setText("Setting");
+        rkSetting.setEnabled(false);
+        rkSetting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rkSettingActionPerformed(evt);
+            }
+        });
+
+        rkHome.setBackground(new java.awt.Color(0, 0, 255));
+        rkHome.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        rkHome.setForeground(new java.awt.Color(255, 255, 255));
+        rkHome.setText("Home");
+        rkHome.setComponentPopupMenu(RKghcl);
+        rkHome.setEnabled(false);
+        rkHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rkHomeActionPerformed(evt);
+            }
+        });
+
+        rkLogout.setBackground(new java.awt.Color(255, 51, 51));
+        rkLogout.setFont(new java.awt.Font("DejaVu Sans", 3, 14)); // NOI18N
+        rkLogout.setForeground(new java.awt.Color(51, 51, 51));
+        rkLogout.setText("Logout");
+        rkLogout.setEnabled(false);
+        rkLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rkLogoutActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
+        Menu.setLayout(MenuLayout);
+        MenuLayout.setHorizontalGroup(
+            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rkSetting, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rkReports, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rkMedical, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rkClinical, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                    .addComponent(rkHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rkLogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+        MenuLayout.setVerticalGroup(
+            MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(rkHome, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(rkClinical, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(rkMedical, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(rkReports, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(rkSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 29, Short.MAX_VALUE)
+                .addComponent(rkLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        getContentPane().add(Menu);
+        Menu.setBounds(0, 0, 221, 463);
+
+        Login.setBackground(new java.awt.Color(61, 51, 51));
+        Login.setLayout(null);
+
+        RKuserName.setBackground(new java.awt.Color(51, 51, 51));
+        RKuserName.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
+        RKuserName.setForeground(new java.awt.Color(255, 255, 255));
+        RKuserName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RKuserName.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        Login.add(RKuserName);
+        RKuserName.setBounds(200, 171, 250, 30);
+
+        RKLogin.setBackground(new java.awt.Color(0, 51, 204));
+        RKLogin.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        RKLogin.setText("Login");
+        RKLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RKLoginActionPerformed(evt);
+            }
+        });
+        Login.add(RKLogin);
+        RKLogin.setBounds(370, 330, 90, 40);
+
+        RKpassword.setBackground(new java.awt.Color(51, 51, 51));
+        RKpassword.setForeground(new java.awt.Color(255, 255, 255));
+        RKpassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        RKpassword.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Login.add(RKpassword);
+        RKpassword.setBounds(200, 248, 250, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/RKinfotech/Image/LoginImage1.jpg"))); // NOI18N
+        Login.add(jLabel1);
+        jLabel1.setBounds(20, 0, 590, 460);
+
+        getContentPane().add(Login);
+        Login.setBounds(220, 0, 630, 470);
+
+        jScrollPane1.setBackground(new java.awt.Color(61, 51, 51));
+
+        rkDP.setBackground(new java.awt.Color(61, 51, 51));
+        jScrollPane1.setViewportView(rkDP);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(222, 0, 630, 463);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void rkClinicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rkClinicalActionPerformed
+        try {
+            switch (rkClinical.getText()) {
+                case "Clinicals":
+                    rkOpen.frame(new RKClinical(), rkDP);
+                    break;
+                case "New Medicine":
+                    rkOpen.frame(new RKMedicineAdd(), rkDP);
+                    break;
+                case "Anugar Nagar":
+                    rkOpen.frame(new RKANagarReport(), rkDP);
+                    break;
+                case "Anugar Nagar Report":
+                    rkOpen.frame(new RKreportAnuragDis(), rkDP);
+                default:
+                    break;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_rkClinicalActionPerformed
+
+    private void rkReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rkReportsActionPerformed
+        switch (rkReports.getText()) {
+            case "Reports":
+                rkClinical.setText("Anugar Nagar Report");
+                rkMedical.setText("Purchase Report");
+                rkReports.setText("Clinical Report");
+                rkSetting.setText("Medicine Stock");
+                rkLogout.setText("Issue Drug Report");
+                rkHome.setText("Report");
+                break;
+            case "Issued Medicine":
+                rkOpen.frame(new RKIssuedMedicine(), rkDP);
+                break;
+            case "Clinical Report":
+                rkOpen.frame(new RKreportClinical(), rkDP);
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_rkReportsActionPerformed
+
+    private void rkHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rkHomeActionPerformed
+        if (!rkHome.getText().equals("Home")) {
+            rkClinical.setText("Clinicals");
+            rkMedical.setText("Medical");
+            rkReports.setText("Reports");
+            rkSetting.setText("Setting");
+            rkHome.setText("Home");
+            rkLogout.setText("Logout");
+            rkReports.setVisible(true);
+            rkSetting.setVisible(true);
+        }
+    }//GEN-LAST:event_rkHomeActionPerformed
+
+    private void rkMedicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rkMedicalActionPerformed
+        switch (rkMedical.getText()) {
+            case "Medical":
+                rkClinical.setText("Anugar Nagar");
+                rkMedical.setText("Stock Reg");
+                rkReports.setText("Issued Medicine");
+                rkSetting.setText("Purchase");
+                rkHome.setText("Medical");
+                break;
+            case "New Party":
+                rkOpen.frame(new RKPartyNameAdd(), rkDP);
+                break;
+            case "Stock Reg":
+                rkOpen.frame(new RKStockReg(), rkDP);
+                break;
+            case "Purchase Report":
+                rkOpen.frame(new RKreportPurchase(), rkDP);
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_rkMedicalActionPerformed
+
+    private void RKLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RKLoginActionPerformed
+        try {
+            if (RKuserName.getText().isEmpty() || RKuserName.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, rkValidation.printErrorStatic("Enter Valid Username"), "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                if (RKpassword.getText().isEmpty() || RKpassword.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, rkValidation.printErrorStatic("Enter Valid Password"), "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    RKpassword.setText(rkMD5.getMD5(RKpassword.getText()));
+                    ResultSet rs = db.rkSelect_rs("SELECT * FROM `rklogin` WHERE `rkUserName` ='" + RKuserName.getText() + "' AND `rkPassWord` ='" + RKpassword.getText() + "'");
+                    if (rs.next()) {
+                        JOptionPane.showMessageDialog(this, rkValidation.printErrorStatic("Welcome to " + RKuserName.getText()), "Login Successful", JOptionPane.INFORMATION_MESSAGE);
+                        Login.setVisible(false);
+                        rkHome.setEnabled(true);
+                        rkClinical.setEnabled(true);
+                        rkMedical.setEnabled(true);
+                        rkReports.setEnabled(true);
+                        rkSetting.setEnabled(true);
+                        rkLogout.setEnabled(true);
+                        RKuserName.setText("");
+                        RKpassword.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(this, rkValidation.printErrorStatic("Invalid Username And Password"), "Error", JOptionPane.ERROR_MESSAGE);
+                        RKpassword.setText("");
+                        RKuserName.requestFocus();
+                    }
+                }
+            }
+        } catch (NoSuchAlgorithmException | SQLException e) {
+            JOptionPane.showMessageDialog(this, rkValidation.printErrorStatic("Contact to Admin..", e.getMessage()));
+        }
+    }//GEN-LAST:event_RKLoginActionPerformed
+
+    private void rkLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rkLogoutActionPerformed
+        if (rkLogout.getText().equals("Logout")) {
+            Login.setVisible(true);
+            rkHome.setEnabled(false);
+            rkClinical.setEnabled(false);
+            rkMedical.setEnabled(false);
+            rkReports.setEnabled(false);
+            rkLogout.setEnabled(false);
+        } else {
+            int a = JOptionPane.showConfirmDialog(this, "Do Want Oepn Issue Drug Report?", "Drug Report", JOptionPane.YES_NO_OPTION);
+            if (a == 0) {
+                rkOpen.frame(new RKreportIssuedMedicine(), rkDP);
+            } else {
+                int b = JOptionPane.showConfirmDialog(this, "Do Want Oepn Expired Drug Report?", "Drug Report", JOptionPane.YES_NO_OPTION);
+                if (b == 0) {
+                    try {
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                        Date dt = new Date();
+                        System.out.println();
+
+                        Map param = new HashMap();  
+                        param.put("todayDate",dateFormat.format(dt));
+                        //String report = new File("").getAbsolutePath() + "\\src\\RKinfotech\\Reports\\RKexpiryMedicine.jrxml";
+                        String report = new File("").getAbsolutePath() + "/src/RKinfotech/Reports/RKexpiryMedicine.jrxml";
+                        JasperReport jasperReport = JasperCompileManager.compileReport(report);
+                        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param, rkConnection.rkConnection());
+                        JasperViewer.viewReport(jasperPrint, false);
+
+                    } catch (JRException e) {
+                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(this, e.getMessage());
+                    }
+                }
+            }
+
+        }
+    }//GEN-LAST:event_rkLogoutActionPerformed
+
+    private void MenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemActionPerformed
+        int i = javax.swing.JOptionPane.showConfirmDialog(this, "i want to open ghcl report", "GHCL", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (0 != i) {
+        } else {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            rkOpen.frame(new RKghclTotalRecord(), rkDP);
+        }
+    }//GEN-LAST:event_MenuItemActionPerformed
+
+    private void MenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItem1ActionPerformed
+        rkOpen.frame(new RKaboutSoft(), rkDP);
+    }//GEN-LAST:event_MenuItem1ActionPerformed
+
+    private void rkSettingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rkSettingActionPerformed
+        switch (rkSetting.getText()) {
+            case "Setting":
+                rkClinical.setText("New Medicine");
+                rkMedical.setText("New Party");
+                rkReports.setVisible(false);
+                rkSetting.setVisible(false);
+                rkHome.setText("Setting");
+                break;
+            case "Purchase":
+                rkOpen.frame(new RKPurchase(), rkDP);
+                break;
+            case "Medicine Stock":
+                rkOpen.frame(new RKreportStockMedicine(), rkDP);
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_rkSettingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -74,7 +452,7 @@ public class RKHome extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
         //</editor-fold>
 
@@ -85,7 +463,26 @@ public class RKHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JPanel Login;
+    private javax.swing.JPanel Menu;
+    private javax.swing.JMenuItem MenuItem;
+    private javax.swing.JMenuItem MenuItem1;
+    private javax.swing.JButton RKLogin;
+    private javax.swing.JPopupMenu RKghcl;
+    private javax.swing.JPasswordField RKpassword;
+    private javax.swing.JTextField RKuserName;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JButton rkClinical;
+    private javax.swing.JDesktopPane rkDP;
+    private javax.swing.JButton rkHome;
+    private javax.swing.JButton rkLogout;
+    private javax.swing.JButton rkMedical;
+    private javax.swing.JButton rkReports;
+    private javax.swing.JButton rkSetting;
     // End of variables declaration//GEN-END:variables
+    rkDatabase db = new rkDatabase();
 }

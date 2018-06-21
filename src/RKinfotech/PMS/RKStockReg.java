@@ -8,6 +8,8 @@ package RKinfotech.PMS;
 import RKinfotech.Class.rkDatabase;
 import RKinfotech.Class.rkValidation;
 import java.awt.HeadlessException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JComboBox;
@@ -25,7 +27,7 @@ public class RKStockReg extends javax.swing.JInternalFrame {
      */
     public RKStockReg() {
         initComponents();
-        rkbillItem = db.DML("SELECT `ID`,`ID` FROM `rkpurchase`");
+        rkbillItem = db.DML("SELECT `ID`,`rkPurchaseBillNo` FROM `rkpurchase`");
         rkbillItem.entrySet().forEach((e) -> {
             rkBillNo.addItem((String) e.getKey());
         });
@@ -59,7 +61,7 @@ public class RKStockReg extends javax.swing.JInternalFrame {
         rkExpDate = new com.toedter.calendar.JDateChooser();
         rkDate = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
-        rlStookIssued = new javax.swing.JTextField();
+        rkQuntites = new javax.swing.JTextField();
 
         setClosable(true);
         setForeground(new java.awt.Color(20, 20, 20));
@@ -67,7 +69,6 @@ public class RKStockReg extends javax.swing.JInternalFrame {
         setTitle("STOCK REGISTER");
         setToolTipText("");
 
-        rkMedicine.setEditable(true);
         rkMedicine.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Medicine" }));
         rkMedicine.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -81,7 +82,6 @@ public class RKStockReg extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 1, 14)); // NOI18N
         jLabel2.setText("Particulars");
 
-        rkBillNo.setEditable(true);
         rkBillNo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Bill Number" }));
         rkBillNo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -109,16 +109,10 @@ public class RKStockReg extends javax.swing.JInternalFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 1, 14)); // NOI18N
-        jLabel7.setText("Batch No.");
+        jLabel7.setText("MFGR");
 
         jLabel8.setFont(new java.awt.Font("DejaVu Math TeX Gyre", 1, 14)); // NOI18N
         jLabel8.setText("Quntities");
-
-        rlStookIssued.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rlStookIssuedActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,7 +140,7 @@ public class RKStockReg extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(90, 90, 90)
-                        .addComponent(rlStookIssued))
+                        .addComponent(rkQuntites))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -190,7 +184,7 @@ public class RKStockReg extends javax.swing.JInternalFrame {
                     .addComponent(rkAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rlStookIssued, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rkQuntites, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rkSave)
@@ -202,20 +196,37 @@ public class RKStockReg extends javax.swing.JInternalFrame {
 
     private void rkSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rkSaveActionPerformed
         try {
-            java.util.Date dt = rkDate.getDate();
-            String rkStart = (dt.getYear() + 1900) + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
-            rktxtDate.setText(rkStart);
+            if (rkSave.getText().equals("Save")) {
+                java.util.Date dt = rkDate.getDate();
+                String rkStart = (dt.getYear() + 1900) + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
+                rktxtDate.setText(rkStart);
 
-            java.util.Date dt1 = rkExpDate.getDate();
-            String rkexDate = (dt1.getYear() + 1900) + "-" + (dt1.getMonth() + 1) + "-" + dt1.getDate();
-            rktxtExpDate.setText(rkexDate);
+                java.util.Date dt1 = rkExpDate.getDate();
+                String rkexDate = (dt1.getYear() + 1900) + "-" + (dt1.getMonth() + 1) + "-" + dt1.getDate();
+                rktxtExpDate.setText(rkexDate);
 
-            int count = db.DML("INSERT INTO `rkstock`(`rkStockName`, `rkStockParticular`, `rkStockBatchNo`, `rkStockDate`, `rkStockExpDate`, `rkStockAmount`,`rkStockQuntities`,`rkStockBillNo`) VALUES (?,?,?,?,?,?,?,?)", new JTextField[]{rkMedicineName, rkParticulars, rkBatchNo, rktxtDate, rktxtExpDate, rkAmount,rlStookIssued, rktxtBillNo,});
+                int count = db.DML("INSERT INTO `rkstock`(`rkStockName`, `rkStockParticular`, `rkStockBatchNo`, `rkStockDate`, `rkStockExpDate`, `rkStockAmount`, `rkStockQuntities`, `rkStockBillNo`) VALUES (?,?,?,?,?,?,?,?)", new JTextField[]{rkMedicineName, rkParticulars, rkBatchNo, rktxtDate, rktxtExpDate, rkAmount, rkQuntites, rktxtBillNo});
 
-            if (count > 0) {
-                JOptionPane.showMessageDialog(this, "Record Saved Successfully.....", "Saved Record", JOptionPane.INFORMATION_MESSAGE);
+                if (count > 0) {
+                    JOptionPane.showMessageDialog(this, "Record Saved Successfully.....", "Saved Record", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else if (rkSave.getText().equals("Update")) {
+                System.out.println(rktxtBillNo.getText());
+                java.util.Date dt = rkDate.getDate();
+                String rkStart = (dt.getYear() + 1900) + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
+                rktxtDate.setText(rkStart);
+
+                java.util.Date dt1 = rkExpDate.getDate();
+                String rkexDate = (dt1.getYear() + 1900) + "-" + (dt1.getMonth() + 1) + "-" + dt1.getDate();
+                rktxtExpDate.setText(rkexDate);
+                
+                rkQuntites.setText(Integer.parseInt(rkQuntites.getText())+quntities+"");
+                int count = db.DML("UPDATE `rkstock` SET `rkStockParticular`=?,`rkStockBatchNo`=?,`rkStockDate`=?,`rkStockExpDate`=?,`rkStockAmount`=?,`rkStockQuntities`=?,`rkStockBillNo`=? WHERE `ID` ="+id,new JTextField[]{rkParticulars,rkBatchNo,rktxtDate,rktxtExpDate,rkAmount,rkQuntites,rktxtBillNo});
+
+                if (count > 0) {
+                    JOptionPane.showMessageDialog(this, "Record Saved Successfully.....", "Update Record", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
-
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(this, val.printError(e.getClass(), e.getMessage(), getClass().getName()), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -226,14 +237,11 @@ public class RKStockReg extends javax.swing.JInternalFrame {
         try {
             rkMedicineName.setText((String) rkMedicine.getSelectedItem());
             rktxtBillNo.setText((String) rkbillItem.get(rkBillNo.getSelectedItem()));
+            getData();
         } catch (Exception e) {
         }
 
     }//GEN-LAST:event_rkItemStateChanged
-
-    private void rlStookIssuedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rlStookIssuedActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rlStookIssuedActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -252,8 +260,8 @@ public class RKStockReg extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser rkExpDate;
     private javax.swing.JComboBox<String> rkMedicine;
     private javax.swing.JTextField rkParticulars;
+    private javax.swing.JTextField rkQuntites;
     private javax.swing.JButton rkSave;
-    private javax.swing.JTextField rlStookIssued;
     // End of variables declaration//GEN-END:variables
     rkDatabase db = new rkDatabase();
     rkValidation val = new rkValidation();
@@ -263,4 +271,20 @@ public class RKStockReg extends javax.swing.JInternalFrame {
     JTextField rktxtExpDate = new JTextField();
     JTextField rktxtBillNo = new JTextField();
     Map<Object, Object> rkbillItem = new HashMap<>();
+    private int quntities = 0, id = 0;
+
+    private void getData() {
+        try {
+            ResultSet rs = db.rkSelect_rs("SELECT `ID`, `rkStockName`,`rkStockQuntities` FROM `rkstock` where `rkStockName` = '" + rkMedicine.getSelectedItem() + "'");
+            if (rs.next()) {
+                id = rs.getInt("ID");
+                quntities = Integer.parseInt(rs.getString("rkStockQuntities"));
+                rkSave.setText("Update");
+            }else{
+                rkSave.setText("Save");
+            }
+        } catch (NumberFormatException | SQLException e) {
+            
+        }
+    }
 }
